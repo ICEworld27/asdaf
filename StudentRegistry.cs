@@ -34,6 +34,15 @@ namespace students
         {
             return Students.Count;
         }
+        public void visitStudents(Visitor visitor) //?
+        {
+            visitor.startVisit();
+            for (int i = 0; i < Students.Count; i++)
+            {
+                visitor.visitStudent(i, Students[i]);
+            }
+            visitor.finishVisit();
+        }
         private StudentRegistry()
         {
         }
@@ -41,3 +50,4 @@ namespace students
 
     }
 }
+
