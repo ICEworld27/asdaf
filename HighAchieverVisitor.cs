@@ -4,7 +4,7 @@ using System.Text;
 
 namespace students
 {
-    class HighAchieverVisitor
+    class HighAchieverVisitor : Visitor
     {
         private bool _hasStudents = false;
 
@@ -22,6 +22,10 @@ namespace students
                 {
                     good = false;
                 }
+            }
+            if (student.marks.Count == 0)
+            {
+                good = false;
             }
             if (good)
             {

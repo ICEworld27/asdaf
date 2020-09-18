@@ -14,7 +14,7 @@ namespace students
         }
         public void visitStudent(int number, Student student)
         {
-            Console.Write(number + "." );
+            Console.Write((number+1) + "." );
             student.print_Short();
             _hasStudents = true;
         }

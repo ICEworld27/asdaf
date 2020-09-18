@@ -34,7 +34,7 @@ namespace students
         {
             return Students.Count;
         }
-        public void visitStudents(Visitor visitor) //?
+        public void visitStudents(Visitor visitor) 
         {
             visitor.startVisit();
             for (int i = 0; i < Students.Count; i++)
@@ -50,4 +50,3 @@ namespace students
 
     }
 }
-

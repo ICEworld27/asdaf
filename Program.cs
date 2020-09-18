@@ -11,18 +11,17 @@ namespace students
         private List<Student> Students = new List<Student>();
         static public void  ListStudentsCommand()
         {
+            StudentRegistry.GetInstance().visitStudents(new DetaliedPrintVisitor());
+            /*
             StudentRegistry  a = StudentRegistry.GetInstance();
             int len = a.getStudentCount();
-            for (int i = 0; i < len; i++)
-            {
-                Student st = a.getStudent(i);
-                //Console.WriteLine("===" + (i + 1) + "===");
-                //st.print_Long();
-                DetaliedPrintVisitor ar = new DetaliedPrintVisitor();
-                ar.startVisit();
-                ar.visitStudent(i + 1, st);
-            }
-
+            Student st = a.getStudent(0);
+            //Console.WriteLine("===" + (i + 1) + "===");
+            //st.print_Long();
+            DetaliedPrintVisitor ar = new DetaliedPrintVisitor();
+            ar.startVisit();
+            ar.visitStudent(0 + 1, st);
+            */
         }
 
             
@@ -46,6 +45,7 @@ namespace students
         }
         static public void RemoveStudentCommand()
         {
+            StudentRegistry.GetInstance().visitStudents(new BriefPrintVisitor());
             StudentRegistry a = StudentRegistry.GetInstance();
             int  n;
             Console.WriteLine("Введите номер: ");
@@ -56,7 +56,8 @@ namespace students
         }
         static public void ShowHighAchiversCommand()
         {
-
+            StudentRegistry.GetInstance().visitStudents(new HighAchieverVisitor());
+            /*
             StudentRegistry a = StudentRegistry.GetInstance();
             int len = a.getStudentCount();
             
@@ -66,7 +67,7 @@ namespace students
                 HighAchieverVisitor arq = new HighAchieverVisitor();
                 arq.startVisit();
                 arq.visitStudent(i + 1, st);
-                /*
+                //
                 bool good = true;
                 Student stu = a.getStudent(i);
                 foreach (KeyValuePair<string, int> item in stu.marks)
@@ -80,15 +81,17 @@ namespace students
                 {
                     stu.print_Short();
                 }
-                */
+                //
             }
+        */
         }
         static public void ShowLowAchiversCommand()
         {
 
-            StudentRegistry a = StudentRegistry.GetInstance();
-            int len = a.getStudentCount();
-
+            //StudentRegistry a = StudentRegistry.GetInstance();
+            //int len = a.getStudentCount();
+            StudentRegistry.GetInstance().visitStudents(new LowAchiverVisitor());
+            /*
             for (int i = 0; i < len; i++)
             {
                 Student stu = a.getStudent(i);
@@ -96,7 +99,7 @@ namespace students
                 LowAchiverVisitor arq = new LowAchiverVisitor();
                 arq.startVisit();
                 arq.visitStudent(i + 1, st);
-                /*
+                //
                 bool good = true;
                 foreach (KeyValuePair<string, int> item in stu.marks)
                 {
@@ -110,8 +113,9 @@ namespace students
                     stu.print_Short();
                 }
 
-                */
+                //
             }
+        */
         }
         static void M1()
         {
