@@ -47,12 +47,27 @@ namespace students
         {
             StudentRegistry.GetInstance().visitStudents(new BriefPrintVisitor());
             StudentRegistry a = StudentRegistry.GetInstance();
-            int  n;
-            Console.WriteLine("Введите номер: ");
-            n = Convert.ToInt32(Console.ReadLine());
-
-            a.removeStudent(n - 1);
-            Console.WriteLine("Удалён успешно!");
+           
+            
+            if (a.getStudentCount() > 0)
+            {
+                int n;
+                Console.WriteLine("Введите номер: ");
+                n = Convert.ToInt32(Console.ReadLine());
+                while (n <= 0 || n > a.getStudentCount())
+                {
+                    Console.WriteLine("Введён неверный номер!");
+                    Console.WriteLine("Введите номер: ");
+                    n = Convert.ToInt32(Console.ReadLine());
+                }
+                a.removeStudent(n - 1);
+                Console.WriteLine("Удалён успешно!");
+            }
+            else
+            {
+                //Console.WriteLine("Студентов в базе данных нет");
+            }
+           
         }
         static public void ShowHighAchiversCommand()
         {
