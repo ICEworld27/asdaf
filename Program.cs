@@ -60,13 +60,17 @@ namespace students
                     Console.WriteLine("Введите номер: ");
                     n = Convert.ToInt32(Console.ReadLine());
                 }
-                a.removeStudent(n - 1);
-                Console.WriteLine("Удалён успешно!");
+                Console.WriteLine("Вы уверены? y/n ");
+                string vp;
+                vp = Console.ReadLine();
+                if (vp == "y")
+                {
+                    a.removeStudent(n - 1);
+                    Console.WriteLine("Удалён успешно!");
+                }
+
             }
-            else
-            {
-                //Console.WriteLine("Студентов в базе данных нет");
-            }
+
            
         }
         static public void ShowHighAchiversCommand()
