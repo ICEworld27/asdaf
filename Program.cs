@@ -1,4 +1,4 @@
-﻿using sun.reflect.generics.visitor;
+using sun.reflect.generics.visitor;
 using System;
 using System.Collections.Generic;
 
@@ -135,6 +135,34 @@ namespace students
                 //
             }
         */
+        }
+        static void SelectStudentCommand()
+        {
+            StudentRegistry.GetInstance().visitStudents(new BriefPrintVisitor());
+            Console.WriteLine("Введите порядковый номер студента (от 1 до " + StudentRegistry.GetInstance().getStudentCount() + " включительно): ");
+            int nv = Convert.ToInt32(Console.ReadLine());
+            if (StudentRegistry.GetInstance().getStudentCount() > 0)
+            {
+                while (nv < 1 && nv > StudentRegistry.GetInstance().getStudentCount())
+                {
+                    Console.WriteLine("Введён неверный номер!");
+                    Console.WriteLine("Введите порядковый номер студента (от 1 до " + StudentRegistry.GetInstance().getStudentCount() + " включительно): ");
+                    nv = Convert.ToInt32(Console.ReadLine());
+                }
+                EditContext.GetInstance().student = StudentRegistry.GetInstance().getStudent(nv - 1);
+            }
+
+
+        }
+        static void ShowSelectedCommand()
+        {
+           
+            EditContext.GetInstance().student.print_Long();
+        }
+        static void DeselectStudentCommand()
+        {
+
+            EditContext.GetInstance().student = null;
         }
         static void M1()
         {
