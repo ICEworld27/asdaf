@@ -1,4 +1,4 @@
-using sun.reflect.generics.visitor;
+﻿using sun.reflect.generics.visitor;
 using System;
 using System.Collections.Generic;
 
@@ -136,7 +136,7 @@ namespace students
             }
         */
         }
-        static void SelectStudentCommand()
+        public static void SelectStudentCommand()
         {
             StudentRegistry.GetInstance().visitStudents(new BriefPrintVisitor());
             Console.WriteLine("Введите порядковый номер студента (от 1 до " + StudentRegistry.GetInstance().getStudentCount() + " включительно): ");
@@ -151,15 +151,20 @@ namespace students
                 }
                 EditContext.GetInstance().student = StudentRegistry.GetInstance().getStudent(nv - 1);
             }
+            else
+            {
+                throw new Exception("No students in base!");
+            }
+
 
 
         }
-        static void ShowSelectedCommand()
+        public static void ShowSelectedCommand()
         {
            
             EditContext.GetInstance().student.print_Long();
         }
-        static void DeselectStudentCommand()
+        public static void DeselectStudentCommand()
         {
 
             EditContext.GetInstance().student = null;

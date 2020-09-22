@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
+using com.sun.org.apache.bcel.@internal.generic;
+
 namespace students
 {
 
@@ -89,7 +91,15 @@ namespace students
         
         public override void Run()
         {
-            if (startup_command != null) startup_command();
+            try
+            {
+                if (startup_command != null) startup_command();
+            }
+            catch
+            {
+                Console.WriteLine("Возникло исключение!");
+            }
+            
             while (true)
             {
                 if (before_select_command != null) before_select_command();
