@@ -169,6 +169,80 @@ namespace students
 
             EditContext.GetInstance().student = null;
         }
+        public void EditFirstNameCommand()
+        {
+            SelectStudentCommand();
+            Console.WriteLine("Введите новую фамилию студента: ");
+            EditContext.GetInstance().student.first_name =Console.ReadLine();
+        }
+        public void EditMidleNameCommand()
+        {
+            SelectStudentCommand();
+            Console.WriteLine("Введите новое имя студента: ");
+            EditContext.GetInstance().student.midle_name = Console.ReadLine();
+        }
+        public void EditLastNameCommand()
+        {
+            SelectStudentCommand();
+            Console.WriteLine("Введите новое отчество студента: ");
+            EditContext.GetInstance().student.last_name = Console.ReadLine();
+        }
+        public void EditGroupCommand()
+        {
+            SelectStudentCommand();
+            Console.WriteLine("Введите новую группу студента: ");
+            EditContext.GetInstance().student.last_name = Console.ReadLine();
+        }
+        public void AddMarkCommand()
+        {
+            SelectStudentCommand();
+            Console.WriteLine("Введите предмет для выставления оценки студенту: ");
+            string subjekt = Console.ReadLine();
+            while (EditContext.GetInstance().student.marks.ContainsKey(subjekt))
+            {
+                Console.WriteLine("Оценка за этот предмет уже есть: ");
+                subjekt = Console.ReadLine();
+            }
+            Console.WriteLine("Введите оценку по предмету " + subjekt + " : " );
+            int mark = Convert.ToInt32(Console.ReadLine());
+            EditContext.GetInstance().student.marks.Add(subjekt, mark);
+        }
+        public void EditMarkCommand()
+        {
+            SelectStudentCommand();
+            Console.WriteLine("Введите предмет для изменение оценки студенту: ");
+            string subjekt = Console.ReadLine();
+            while (!EditContext.GetInstance().student.marks.ContainsKey(subjekt))
+            {
+                Console.WriteLine("Этого предмета ещё нет!");
+                subjekt = Console.ReadLine();
+            }
+            Console.WriteLine("Введите оценку по предмету " + subjekt + " : ");
+            int mark = Convert.ToInt32(Console.ReadLine());
+            EditContext.GetInstance().student.marks[subjekt] = mark;
+        }
+        public void DeleteMarkCommand()
+        {
+            SelectStudentCommand();
+            Console.WriteLine("Введите предмет для удаления оценки студенту: ");
+            string subjekt = Console.ReadLine();
+            while (!EditContext.GetInstance().student.marks.ContainsKey(subjekt))
+            {
+                Console.WriteLine("Этого предмета ещё нет!");
+                subjekt = Console.ReadLine();
+            }
+            EditContext.GetInstance().student.marks.Remove(subjekt);
+        }
+        public void ClearMarkCommand()
+        {
+            SelectStudentCommand();
+            Console.WriteLine("y/n");
+            if (Console.ReadLine() == "y")
+            {
+                EditContext.GetInstance().student.marks.Clear();
+            }
+            
+        }
         static void M1()
         {
             Console.WriteLine("ASDADASD");
