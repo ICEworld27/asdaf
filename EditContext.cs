@@ -7,7 +7,7 @@ namespace students
     class EditContext
     {
         private static EditContext instance = null;
-        Student student;
+        public Student student;
         private EditContext()
         {
 
